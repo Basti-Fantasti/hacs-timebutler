@@ -1,0 +1,12 @@
+{
+  "domain": "timebutler",
+  "name": "Timebutler",
+  "codeowners": ["@Basti-Fantasti"],
+  "config_flow": true,
+  "documentation": "https://github.com/Basti-Fantasti/hacs-timebutler",
+  "integration_type": "service",
+  "iot_class": "cloud_polling",
+  "issue_tracker": "https://github.com/Basti-Fantasti/hacs-timebutler/issues",
+  "requirements": [],
+  "version": "0.1.0"
+}
