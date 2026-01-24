@@ -4,6 +4,7 @@
   "codeowners": ["@Basti-Fantasti"],
   "config_flow": true,
   "documentation": "https://github.com/Basti-Fantasti/hacs-timebutler",
+  "icon": "mdi:clock-check",
   "integration_type": "service",
   "iot_class": "cloud_polling",
   "issue_tracker": "https://github.com/Basti-Fantasti/hacs-timebutler/issues",
