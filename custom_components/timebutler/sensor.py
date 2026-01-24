@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-from collections import defaultdict
 from typing import TYPE_CHECKING, Any
 
 from homeassistant.components.sensor import SensorEntity
@@ -16,6 +15,20 @@ if TYPE_CHECKING:
     from homeassistant.config_entries import ConfigEntry
     from homeassistant.core import HomeAssistant
     from homeassistant.helpers.entity_platform import AddEntitiesCallback
+
+# Translation keys for group sensors
+TRANSLATION_KEY_WORKING = "people_working"
+TRANSLATION_KEY_ON_BREAK = "people_on_break"
+TRANSLATION_KEY_VACATION = "people_on_vacation"
+TRANSLATION_KEY_SICKNESS = "people_on_sickness"
+
+# Map status to translation key
+STATUS_TRANSLATION_KEYS: dict[str, str] = {
+    STATUS_WORKING: TRANSLATION_KEY_WORKING,
+    STATUS_PAUSED: TRANSLATION_KEY_ON_BREAK,
+    "vacation": TRANSLATION_KEY_VACATION,
+    "sickness": TRANSLATION_KEY_SICKNESS,
+}
 
 
 async def async_setup_entry(
@@ -150,14 +163,28 @@ class TimebutlerGroupSensor(CoordinatorEntity[TimebutlerDataUpdateCoordinator], 
         self._status_filter = status_filter
         self._department = department
 
-        # Build unique ID and name
+        # Build unique ID
         if department:
             dept_slug = _slugify(department)
             self._attr_unique_id = f"{entry.entry_id}_group_{dept_slug}_{status_filter}"
-            self._attr_name = f"{department} - {self._status_display}"
         else:
             self._attr_unique_id = f"{entry.entry_id}_group_{status_filter}"
-            self._attr_name = f"People {self._status_display}"
+
+        # Use translation key if available, otherwise fall back to generated name
+        translation_key = STATUS_TRANSLATION_KEYS.get(status_filter)
+        if translation_key and not department:
+            self._attr_translation_key = translation_key
+        elif department:
+            # For department sensors, use translation with placeholder
+            if translation_key:
+                self._attr_translation_key = f"{translation_key}_department"
+                self._attr_translation_placeholders = {"department": department}
+            else:
+                # Fallback for unknown absence types
+                self._attr_name = f"{department} - {self._format_status(status_filter)}"
+        else:
+            # Fallback for unknown absence types without translation
+            self._attr_name = f"People {self._format_status(status_filter)}"
 
         self._attr_device_info = DeviceInfo(
             identifiers={(DOMAIN, entry.entry_id)},
@@ -166,15 +193,10 @@ class TimebutlerGroupSensor(CoordinatorEntity[TimebutlerDataUpdateCoordinator], 
             entry_type=DeviceEntryType.SERVICE,
         )
 
-    @property
-    def _status_display(self) -> str:
-        """Get display name for the status."""
-        if self._status_filter == STATUS_WORKING:
-            return "Working"
-        if self._status_filter == STATUS_PAUSED:
-            return "On Break"
-        # Absence types
-        return f"On {self._status_filter.replace('_', ' ').title()}"
+    @staticmethod
+    def _format_status(status: str) -> str:
+        """Format status for display (fallback when no translation)."""
+        return f"On {status.replace('_', ' ').title()}"
 
     def _get_matching_users(self) -> list[UserStatus]:
         """Get users matching the filter criteria."""

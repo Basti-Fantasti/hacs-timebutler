@@ -28,5 +28,33 @@
         }
       }
     }
+  },
+  "entity": {
+    "sensor": {
+      "people_working": {
+        "name": "People working"
+      },
+      "people_on_break": {
+        "name": "People on break"
+      },
+      "people_on_vacation": {
+        "name": "People on vacation"
+      },
+      "people_on_sickness": {
+        "name": "People sick"
+      },
+      "people_working_department": {
+        "name": "{department} - Working"
+      },
+      "people_on_break_department": {
+        "name": "{department} - On break"
+      },
+      "people_on_vacation_department": {
+        "name": "{department} - On vacation"
+      },
+      "people_on_sickness_department": {
+        "name": "{department} - Sick"
+      }
+    }
   }
 }

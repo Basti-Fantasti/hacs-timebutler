@@ -1,0 +1,60 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Mit Timebutler verbinden",
+        "description": "Geben Sie Ihren Timebutler API-Token ein. Sie finden diesen in Ihren Timebutler-Kontoeinstellungen.",
+        "data": {
+          "api_token": "API-Token"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Verbindung zur Timebutler-API fehlgeschlagen",
+      "invalid_auth": "Ungültiger API-Token oder API-Zugriff wurde deaktiviert",
+      "unknown": "Unerwarteter Fehler"
+    },
+    "abort": {
+      "already_configured": "Dieses Timebutler-Konto ist bereits konfiguriert"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Timebutler-Optionen",
+        "description": "Konfigurieren Sie das Aktualisierungsintervall für Timebutler-Daten.",
+        "data": {
+          "scan_interval": "Aktualisierungsintervall (Sekunden)"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "people_working": {
+        "name": "Personen anwesend"
+      },
+      "people_on_break": {
+        "name": "Personen in Pause"
+      },
+      "people_on_vacation": {
+        "name": "Personen im Urlaub"
+      },
+      "people_on_sickness": {
+        "name": "Personen krank"
+      },
+      "people_working_department": {
+        "name": "{department} - Anwesend"
+      },
+      "people_on_break_department": {
+        "name": "{department} - In Pause"
+      },
+      "people_on_vacation_department": {
+        "name": "{department} - Im Urlaub"
+      },
+      "people_on_sickness_department": {
+        "name": "{department} - Krank"
+      }
+    }
+  }
+}
