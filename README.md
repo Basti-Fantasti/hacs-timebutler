@@ -1,9 +1,15 @@
 # Timebutler for Home Assistant
 
-[![HACS Validation](https://github.com/basti-fantasti/hacs-timebutler/actions/workflows/validate.yml/badge.svg)](https://github.com/basti-fantasti/hacs-timebutler/actions/workflows/validate.yml)
+[![HACS Validation](https://github.com/Basti-Fantasti/hacs-timebutler/actions/workflows/validate.yml/badge.svg)](https://github.com/Basti-Fantasti/hacs-timebutler/actions/workflows/validate.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-A Home Assistant custom integration for [Timebutler](https://timebutler.com) time tracking platform. Provides sensors showing employee work status, absences, and availability.
+A Home Assistant custom integration for the [Timebutler](https://www.timebutler.com) time tracking platform. Provides sensors showing employee work status, absences, and availability.
+
+## Disclaimer
+
+This is an **unofficial**, **non-commercial**, and **free** community integration. It is **not affiliated with, endorsed by, or related to Timebutler or its company** in any way. This project is developed independently to allow Timebutler users to integrate their data into Home Assistant.
+
+Use at your own risk. The authors are not responsible for any issues arising from the use of this integration.
 
 ## Features
 
@@ -11,6 +17,11 @@ A Home Assistant custom integration for [Timebutler](https://timebutler.com) tim
 - **Group Sensors** - Count of people working, on break, on vacation, etc.
 - **Department Filtering** - Group sensors per department
 - **Configurable Polling** - Adjustable update interval (1-60 minutes)
+- **Multilingual** - Supports English and German translations
+
+### Planned Features
+
+Time tracking functions (start/pause/stop clock from within Home Assistant) are currently **not implemented** but may be added in a future release.
 
 ## Installation
 
@@ -18,7 +29,7 @@ A Home Assistant custom integration for [Timebutler](https://timebutler.com) tim
 
 1. Open HACS in Home Assistant
 2. Click the three dots menu > **Custom repositories**
-3. Add URL: `https://github.com/basti-fantasti/hacs-timebutler`
+3. Add URL: `https://github.com/Basti-Fantasti/hacs-timebutler`
 4. Category: **Integration**
 5. Click **Add**
 6. Search for "Timebutler" and install
@@ -37,6 +48,8 @@ A Home Assistant custom integration for [Timebutler](https://timebutler.com) tim
 4. Enter your Timebutler API token
 5. Configure polling interval (optional, default: 5 minutes)
 
+You can obtain your API token from your Timebutler account settings at [https://www.timebutler.com](https://www.timebutler.com).
+
 ## Sensors
 
 ### Individual Sensors
@@ -53,7 +66,9 @@ Each user gets a sensor: `sensor.timebutler_<username>`
 **Attributes:**
 - `department` - User's department
 - `email` - User's email
-- `status_since` - When current status started
+- `clock_in_time` - When the user clocked in (if working)
+- `absence_type` - Type of absence (if applicable)
+- `absence_start` - Start date of current absence (if applicable)
 - `absence_end` - End date of current absence (if applicable)
 
 ### Group Sensors
@@ -72,8 +87,8 @@ Each group sensor includes a `names` attribute with the list of people.
 
 ## Support
 
-- [Report Issues](https://github.com/basti-fantasti/hacs-timebutler/issues)
-- [Documentation](https://github.com/basti-fantasti/hacs-timebutler)
+- [Report Issues](https://github.com/Basti-Fantasti/hacs-timebutler/issues)
+- [Documentation](https://github.com/Basti-Fantasti/hacs-timebutler)
 
 ## License
 
