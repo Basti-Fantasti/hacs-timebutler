@@ -76,6 +76,7 @@ class TimebutlerUserSensor(CoordinatorEntity[TimebutlerDataUpdateCoordinator], S
     """Sensor representing a Timebutler user's status."""
 
     _attr_has_entity_name = True
+    _attr_translation_key = "user_status"
 
     def __init__(
         self,
@@ -89,7 +90,7 @@ class TimebutlerUserSensor(CoordinatorEntity[TimebutlerDataUpdateCoordinator], S
         self._attr_unique_id = f"{entry.entry_id}_{user_id}"
 
         user = coordinator.data.users[user_id]
-        self._attr_name = user.name
+        self._attr_translation_placeholders = {"name": user.name}
         self._attr_device_info = DeviceInfo(
             identifiers={(DOMAIN, entry.entry_id)},
             name="Timebutler",

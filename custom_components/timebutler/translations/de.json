@@ -31,6 +31,16 @@
   },
   "entity": {
     "sensor": {
+      "user_status": {
+        "name": "{name}",
+        "state": {
+          "working": "Anwesend",
+          "paused": "In Pause",
+          "off": "Abwesend",
+          "vacation": "Urlaub",
+          "sickness": "Krank"
+        }
+      },
       "people_working": {
         "name": "Personen anwesend"
       },
