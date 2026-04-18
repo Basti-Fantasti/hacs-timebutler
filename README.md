@@ -1,7 +1,10 @@
 # Timebutler for Home Assistant
 
 [![HACS Validation](https://github.com/Basti-Fantasti/hacs-timebutler/actions/workflows/validate.yml/badge.svg)](https://github.com/Basti-Fantasti/hacs-timebutler/actions/workflows/validate.yml)
+[![Tests](https://github.com/Basti-Fantasti/hacs-timebutler/actions/workflows/tests.yml/badge.svg)](https://github.com/Basti-Fantasti/hacs-timebutler/actions/workflows/tests.yml)
+[![Latest Release](https://img.shields.io/github/v/release/Basti-Fantasti/hacs-timebutler)](https://github.com/Basti-Fantasti/hacs-timebutler/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![HA 2023.1+](https://img.shields.io/badge/Home%20Assistant-2023.1%2B-blue?logo=home-assistant)](https://www.home-assistant.io)
 
 ![Timebutler Logo](logo.png)
 
