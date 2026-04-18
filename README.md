@@ -101,7 +101,7 @@ Contributions and feature requests are welcome, but the following terms apply:
 
 - **Open an issue before writing code.** Discuss the requirements and agree on an approach first. This avoids wasted effort and keeps the integration coherent.
 - **AI-assisted development is fine.** Using AI tools to help write or review code is encouraged.
-- **"AI-assisted" is not "AI-only".** Contributors must understand what the code does and stand behind it. Pure vibe-coded submissions — where AI generates the code and it is submitted without review or understanding — will not be accepted.
+- **"AI-assisted" is not "AI-only".** Contributors must understand what the code does and stand behind it. Pure vibe-coded submissions (where AI generates the code and is submitted without review or understanding) will not be accepted.
 - **When in doubt, get in touch first.**
 
 ## License
