@@ -55,6 +55,20 @@ Time tracking functions (start/pause/stop clock from within Home Assistant) are 
 
 You can obtain your API token from your Timebutler account settings at [https://www.timebutler.com](https://www.timebutler.com).
 
+## Screenshots
+
+![Integration Overview](screenshots/Timebutler-Integraiton-Overview.png)
+
+*Integration card in Home Assistant*
+
+![Detail View](screenshots/Timebutler-DetailView.png)
+
+*Integration detail view showing all sensors and recent activity*
+
+![Sync Interval](screenshots/Timebutler-SyncInterval.png)
+
+*Configurable update interval via integration options*
+
 ## Sensors
 
 ### Individual Sensors
