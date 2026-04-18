@@ -51,7 +51,7 @@ async def async_setup_entry(
 
     # Create dynamic sensors for each absence type found
     absence_types = {
-        status.current_absence.absence_type.lower().replace(" ", "_")
+        _slugify(status.current_absence.absence_type)
         for status in coordinator.data.user_statuses.values()
         if status.current_absence
     }
@@ -67,9 +67,12 @@ async def async_setup_entry(
     async_add_entities(entities)
 
 
+_UMLAUT_MAP = str.maketrans({"ä": "ae", "ö": "oe", "ü": "ue", "ß": "ss"})
+
+
 def _slugify(text: str) -> str:
-    """Create a slug from text."""
-    return text.lower().replace(" ", "_").replace("-", "_")
+    """Create a slug from text, normalizing German umlauts to ASCII."""
+    return text.lower().translate(_UMLAUT_MAP).replace(" ", "_").replace("-", "_")
 
 
 class TimebutlerUserSensor(CoordinatorEntity[TimebutlerDataUpdateCoordinator], SensorEntity):
